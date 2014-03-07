@@ -3,6 +3,13 @@
 	var suggests = document.querySelector('.suggests');
 	var suggestList = [];
 
+	autoSuggest.onkeyup = function () {
+		resetSuggest();
+		if (autoSuggest.value.length >= 3) {
+			searchUsers(autoSuggest.value);
+		}
+	}	
+
 	function searchUsers(autoSuggestValue) {
 		var re = new RegExp(autoSuggestValue,'i');		
 
@@ -15,6 +22,18 @@
 		};
 	}
 
+	function checkSuggestOnList(suggest) {
+		if (suggestList.length > 0) {
+			for (var i = suggestList.length - 1; i >= 0; i--) {
+				if (suggestList[i] != suggest) {
+					suggestList.push(suggest);
+				};
+			};
+		} else {
+			suggestList.push(suggest);
+		}
+	}
+
 	function updateSuggestList() {
 		suggests.innerHTML = "";
 		for (var i = suggestList.length - 1; i >= 0; i--) {
@@ -22,28 +41,8 @@
 		};
 	}
 
-	function checkSuggestOnList(suggest) {
-		if (suggestList.length > 0) {
-			for (var i = suggestList.length - 1; i >= 0; i--) {
-				if (suggestList[i] != suggest) {
-
-					suggestList.push(suggest);
-				};
-			};
-		} else {
-			suggestList.push(suggest);
-		}
-
-	}
-
 	function resetSuggest() {
 		suggests.innerHTML = "";
 		suggestList.length = 0;
 	}
 
-	autoSuggest.onkeyup = function (argument) {
-		resetSuggest();
-		if (autoSuggest.value.length >= 3) {
-			searchUsers(autoSuggest.value);
-		}
-	}	
