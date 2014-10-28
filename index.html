@@ -7,9 +7,11 @@
 
 <body>
 
-	<label for="name">Faça sua busca</label>
-	<input type="text" id="auto-suggest" name="name">
-	<div class="suggests"></div>
+	<div data-auto-suggest>
+        <label for="name">Faça sua busca</label>
+        <input type="text" name="name" class="auto-suggest-input">
+        <div class="auto-suggest-list"></div>
+    </div>
 
 	<script src="script.js"></script>	
 </body>
