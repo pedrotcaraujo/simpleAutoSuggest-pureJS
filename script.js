@@ -1,6 +1,8 @@
 +function(){
+	
+	'use strict';
 
-	var AutoSuggest = function(element, data) {
+	function AutoSuggest(element, data) {
 		var element = element
 		var USERS = data || [];	
 		
